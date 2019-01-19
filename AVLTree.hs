@@ -111,7 +111,7 @@ singleton :: Ord a => a -> AVLTree a
 singleton x  = insert x Empty 
 
 
--- Constructs an AVL Tree form a list of elements
+-- Constructs an AVL Tree from a list of elements
 -- time complexity: O(n log n)
 fromList :: Ord a => [a] -> AVLTree a
 fromList ls = foldr insert Empty ls  
