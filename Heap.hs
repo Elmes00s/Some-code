@@ -92,10 +92,10 @@ merge x (Node t _ Empty Empty) Empty
 merge x Empty (Node t _ Empty Empty)  
     | x < t              = Node t 2 Empty (singleton x)  
     | otherwise          = Node x 2 Empty (singleton t)
-merge x (Node t n l r) (Node t' n' l' r')
-    | x >= t && x >= t'  = Node x new_n (Node t n l r) (Node t' n' l' r')
+merge x (Node t n l r) (Node t' n' l' r')    
     | t >= x && t >= t'  = Node t new_n (merge x l r) (Node t' n' l' r') 
-    | otherwise          = Node t' new_n (Node t n l r) (merge x l' r') 
+    | t' >= t && t' >= x = Node t' new_n (Node t n l r) (merge x l' r') 
+    | otherwise          = Node x new_n (Node t n l r) (Node t' n' l' r')
     where
     new_n   = 1 + n + n' 
    
